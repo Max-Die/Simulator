@@ -27,7 +27,7 @@ NUM_PROCESSES = 6                                       # number of parallel pro
 """PARAMETER"""
 
 The simulator is pseudorandom, if you want to get different pictures (while having the same training configuration) please change the number in 
-rand = np.random.mtrand.RandomState(pid + 100) (line 161) to whatever number you want every time you want to have different results.
+rand = np.random.mtrand.RandomState(pid + 100) (line 161 in simulator.py) to whatever number you want every time you want to have different results.
 
 
 Additional information: 
