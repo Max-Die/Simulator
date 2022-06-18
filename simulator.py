@@ -52,7 +52,6 @@ NUM_PROCESSES = 6                 # number of parallel processes running
 """ Function for drawing the shapes on a single png file."""
 def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
   file = open(INPUT_DIR + "/generated/txt/" + filename + ".txt", "w+")
-  file2 = open(INPUT_DIR + "/generated/txt_fine/" + filename + ".txt", "w+")
 
   num_fig = rand.randint(min_num_of_fig, max_num_of_fig + 1)
   for i in range(num_fig):
@@ -66,7 +65,6 @@ def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
       else:
         # draw a circular ring with nois
         img, bb = draw_circular_ring(img, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
       file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "ellipse":
@@ -74,7 +72,6 @@ def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
         img, bb = draw_ellipse_w_n(img, INTERRUPTION, MISSING_FRAGMENTS, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_ellipse(img, INTERRUPTION, MISSING_FRAGMENTS, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
       file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "trianglecontur":
@@ -82,73 +79,63 @@ def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
         img, bb = draw_triangle_contur_w_n(img, INTERRUPTION, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_triangle_contur(img, INTERRUPTION, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "triangle" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
      
     if fig == "triangle":
       if num == 0:
         img, bb = draw_triangle_w_n(img, INTERRUPTION, MISSING_FRAGMENTS, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_triangle(img, INTERRUPTION, MISSING_FRAGMENTS, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "triangle" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "rectanglecontur":
       if num == 0:
         img, bb = draw_rectangle_contur_w_n(img, INTERRUPTION, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_rectangle_contur(img, INTERRUPTION, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "rectangle":
       if num == 0:
         img, bb = draw_rectangle_w_n(img, INTERRUPTION, MISSING_FRAGMENTS, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_rectangle(img, INTERRUPTION, MISSING_FRAGMENTS, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "pentagon":
       if num == 0:
         img, bb = draw_pentagon(img, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_pentagon_w_n(img, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "hexagon":
       if num == 0:
         img, bb = draw_hexagon(img, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else: 
         img, bb = draw_hexagon_w_n(img, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "heptagon":
       if num == 0:
         img, bb = draw_heptagon(img, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else: 
         img, bb = draw_heptagon_w_n(img, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand) 
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "octagon":
       if num == 0:
         img, bb = draw_octagon(img, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_octagon_w_n(img, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
     if fig == "line":
       if num == 0:
         img, bb = draw_line(img, THICKNESS_MIN, THICKNESS_MAX, INTERRUPTION, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
         img, bb = draw_line_w_n(img, THICKNESS_MIN, THICKNESS_MAX, INTERRUPTION, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
-      file2.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
-      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + "polygon" + " " + str(0) + "\n")
-
+      file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
   file.close()   
   return img
