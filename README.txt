@@ -102,6 +102,7 @@ if you want to draw bounding boxes aroung a figure you can specify this in draw_
 The logic of the program is simple. Because of this the program can be modified easily, especially the draw_fig.py file which is responsible for colouring. 
 To change the shapes of the figures take a look at the ellipse.py file so you understand the logic.
 
+You can run the simulator by running "python3 simulator.py" in the command lind
 
 
 
