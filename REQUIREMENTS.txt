@@ -1,0 +1,10 @@
+The following python modules are neccesary to execute the simulator:
+matplotlib
+random 
+numpy 
+pathlib 
+PIL
+time
+multiprocessing
+skimage
+colorsys
