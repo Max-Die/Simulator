@@ -1,4 +1,5 @@
 This README.txt aims to explain the architecture and logic of the dataset simulator.
+The file txt_to_xml.py takes txt files and converts them to xml files (so that you can create tfrecord files for object detection)
 The simulator should work for each picture size (above 100x100 px) but it not tested for sizes other than 640x640 and 1024x1024.
 It takes all png file in the directory (specified by INPUT_DIR) and modfies them. 
 The modified pictures are in a subdirectory of INPUT_DIR called generated. 
