@@ -170,10 +170,6 @@ if __name__ == '__main__':
   processes = []
   iterations = int(np.ceil(len(pathlist) / NUM_PROCESSES))
 
-  #delete
-  filepath3 = Path(INPUT_DIR + "/generated/" + "txt_fine/")
-  filepath3.mkdir(parents = True, exist_ok = True)
-
   # iterate through all png files and do it (if wanted) in parallel 
   for j in range(iterations):
     for i in range(NUM_PROCESSES):
