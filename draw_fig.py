@@ -124,7 +124,7 @@ def draw_fig(img, points, bb, difficulty, pixel_processing, rand):
         img[points[i][1], points[i][0]] = [round(r * 255), round(g * 255), round(b * 255)]
   
   # uncomment this if you want to have bounding boxes on the images
-  
+  """
   row, col = draw.rectangle_perimeter(start = (bb[1], bb[0]), end = (bb[3], bb[2]))
   for i in range(len(row)):
     if row[i] >= 1024:
@@ -132,6 +132,6 @@ def draw_fig(img, points, bb, difficulty, pixel_processing, rand):
     if col[i] >= 1024:
       col[i] = 0
   img[row, col, : ] = [255, 0, 0]
-  
+  """
 
   return img
