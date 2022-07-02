@@ -8,8 +8,8 @@ import os
 """PARAMETER"""
 TXT_DIR = "../../generated/txt/"       # controls where the programm searches for the txt files
 IMG_DIR = "../../generated/"           # controls where the programm makes the xml directory for the xml files
-    IMG_WIDTH = 640 # the width of the used pictures
-    IMG_HEIGHT = 640 # the heigth of the used pictures
+IMG_WIDTH = 640 # the width of the used pictures
+IMG_HEIGHT = 640 # the heigth of the used pictures
 """PARAMETER"""
 
 cwd = os.getcwd()
