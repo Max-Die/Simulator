@@ -4,17 +4,18 @@ from PIL import Image
 import os
 
 # this file generates xml files for the tensorflow object detection api out of txt files
-
 """PARAMETER"""
-TXT_DIR = "../../generated/txt/"       # controls where the programm searches for the txt files
-IMG_DIR = "../../generated/"           # controls where the programm makes the xml directory for the xml files
+DIR = "../absdefg"             # directory in which the generated folder of the simulator is 
 IMG_WIDTH = 640 # the width of the used pictures
 IMG_HEIGHT = 640 # the heigth of the used pictures
 """PARAMETER"""
+dir_len = len(DIR)
+TXT_DIR = DIR + "/generated/txt/"
+IMG_DIR = DIR + "/generated/"
 
 cwd = os.getcwd()
 os.mkdir(cwd + "/" + IMG_DIR + "xml")
-OUTPUT_DIR = "../../generated/xml/"
+OUTPUT_DIR = IMG_DIR + "/xml/"
 
 
 pathlist = Path(TXT_DIR).glob('*.txt')
@@ -25,8 +26,8 @@ for path in pathlist:
         contents = f.readlines()
     annotation = ET.Element("annotation")
     folder = ET.SubElement(annotation, "folder").text = ""
-    filename = ET.SubElement(annotation, "filename").text = path_in_str[20 : -4] + ".png"
-    path = ET.SubElement(annotation, "path").text = path_in_str[20 : -4] + ".png"
+    filename = ET.SubElement(annotation, "filename").text = path_in_str[dir_len + 15: -4] + ".png"
+    path = ET.SubElement(annotation, "path").text = path_in_str[dir_len + 15: -4] + ".png"
     source = ET.SubElement(annotation, "source")
     database = ET.SubElement(source, "database").text = ""
     
@@ -54,7 +55,9 @@ for path in pathlist:
         ymax = ET.SubElement(bndbox, "ymax").text = str(x[3])
         tree = ET.ElementTree(annotation)
         
-    tree.write(OUTPUT_DIR + path_in_str[20 : -4] + ".xml")
-    
+    tree.write(OUTPUT_DIR + path_in_str[dir_len + 15: -4] + ".xml")
+
+
+
 
 
