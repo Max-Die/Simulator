@@ -44,12 +44,12 @@ THICKNESS_MAX: at least THICKNESS_MIN + 1
 INTERRUPTION:   0: no interruption in an figure
                 1: interruption in an figure
 
-PIXEL_PROCESSING:       r: changes the r value in rgb colour model
-                        g: changes the g value in rgb colour model
-                        b: changes the b value in rgb colour model
-                        d: changes the l value in hls colour model so that the figure gets darker
-                        l: changes the l value in hls colour model so that the figure gets lighter
-                        h: changes the h value in hls colour model
+PIXEL_PROCESSING:       r: increases the r value in rgb colour model
+                        g: increases the g value in rgb colour model
+                        b: increases the b value in rgb colour model
+                        d: decrease the l value in hls colour model so that the figure gets darker
+                        l: increase the l value in hls colour model so that the figure gets lighter
+                        h: increase the h value in hls colour model
 
 SHAPES: must be an array containing at least one of the following shapes:   circular ring 
                                                                             ellipse
@@ -67,6 +67,7 @@ MISSING_FRAGMENTS:  must be an array containing numbers [low, high]
                     if no missing fragments are wanted then configure low = high = 0
                     otherwise high >= low + 1 and high <= 6 and low >= 0
                     only works on the figures ellipse, triangle, rectangle
+                    there will be at least *low* and at most *high* missing fragments
 
 
 SHARPNESS_OF_EDGES: each pixel will be moved randomly in x and y direction about a random value in {-SHARPNESS_OF_EDGES, +SHARPNESS_OF_EDGES}
