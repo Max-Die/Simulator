@@ -1,11 +1,14 @@
 This README.txt aims to explain the architecture and logic of the dataset simulator.
-The file txt_to_xml.py takes txt files and converts them to xml files (so that you can create tfrecord files for object detection)
-The simulator should work for each picture size (above 100x100 px), but is not tested for sizes other than 640x640 and 1024x1024.
-It takes all png files in the directory (specified by INPUT_DIR) and modifies them. 
+The simulator was part of the bachelor thesis of Max Dietsch.
+The file txt_to_xml.py takes the generated txt-files and converts them to xml-files (so that you can create tfrecord-files for object detection).
+Therefore the txt_to_xml file generated a subdirectiory in generated, called xml. There are the created xml-files. 
+The simulator should work for each picture size (above 100x100 px), but is not tested for sizes other than 640x640 px and 1024x1024 px.
+The simulator takes all png-files in the directory (specified by INPUT_DIR) and stores a modified version ot them. 
 The modified pictures are generated in a subdirectory of INPUT_DIR, called generated. 
-In the directory generated, there will be a directory called txt created, in which the metadatas of the images are stored. 
+In the directory generated, there will be a directory, called txt, created, in which the metadatas of the images are stored. 
 ALL PRIMARLY CONFIGURATIONS can be made by editing the simulator.py file.
 You can configure the number of shapes in a picture, the sizes of the shapes, the sharpness of the shapes and the drawing style. 
+Before running the process, you may have to run "ulimit -n 8096" in your terminal.
 
 If you want to do so you have to configure the simulator.py file (lines 31 - 48): 
 
@@ -18,7 +21,7 @@ THICKNESS_MAX = 13                                      # maximal thickness of t
 INTERRUPTION = 0                                        # controls whether a shape has an interruption and is splitted in two parts
 PIXEL_PROCESSING = ["r", "g", "b", "d", "l" "h"]        # controls how the pixels of a figure could be processed
 SHAPES = ["circularring", "ellipse", "trianglecontur", "triangle", "rectanglecontur", "rectangle", "pentagon", "hexagon", "heptagon", "octagon", "line"]    # defines all shapes which could be processed into an image
-#SHAPES = ["circularring", "ellipse", "trianglecontur", "triangle", "rectanglecontur", "rectangle", "line"]    # defines all shapes which could be processed into an image
+#SHAPES = ["circularring", "ellipse", "trianglecontur", "triangle", "rectanglecontur", "rectangle", "line"]    # defines all shapes which could be drawn into an image
 MISSING_FRAGMENTS = [0, 2]                              # controls whether a shape has missing fragments
 SHARPNESS_OF_EDGES = 1                                  # controls how sharp the edges of a figure are (random noise): low -> sharp edges, minimum is 1
 DIFFICULTY = 15                                         # controls how much a pixel is modified: low -> difficult
@@ -101,7 +104,7 @@ draw_fig.py colours the pixels of the given array.
 There you can add more species of pixel modifications.
 If you want to draw bounding boxes aroung a figure, you can specify this in draw_fig.py in lines 127 - 135.
 
-The logic of the program is simple. Because of this the program can be modified easily, especially the draw_fig.py file which is responsible for colouring. 
+The logic of the program is simple. Because of this the program can be modified easily, especially the draw_fig.py file, which is responsible for colouring. 
 To change the shapes of the figures, take a look at the ellipse.py file so you understand the logic.
 
 You can run the simulator by running "python3 simulator.py" in the command line.

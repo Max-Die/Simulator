@@ -13,10 +13,10 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
   x = rand.randint(0, width)
   y = rand.randint(0, heigth)
   angle = rand.randint(0, 180)
+  # generate diameters of the ellipse
   dx, dy = 1000, 0
   rmin = round(size_min)
   rmax = round(size_max)
-  # generate diameters of the ellipse
   while(abs(dx - dy) > 100):
     dx = rand.randint(rmin, rmax)
     dy = rand.randint(rmin, rmax)
@@ -33,15 +33,15 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
   xi = rand.randint(x - dx + 10, x + dx - 9)
   d = rand.randint(10, 40)
   j = 0
-  # rotate the figure and if wanted delete some fragments from the ellipse
-  # the missing fragments are drawn randomly from the specified configuration
+  # rotate the figure and if wanted, delete some fragments from the ellipse
+  # the number of missing fragments is drawn randomly from the specified configuration
   if missing_fragments:
     frags = rand.randint(missing_fragments[0], missing_fragments[1] + 1)
     if frags == 0:
       for i in range(len(row)):
         x_old = col[i] - x
         y_old = row[i] - y
-        # if interruption is active then points in a particular band are not modified 
+        # if interruption is active, then points in a particular band are not modified 
         if interruption:
           if x_old > xi - x and x_old < xi - x + d:
             continue
@@ -64,7 +64,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
           if not ((col[i] - x1)**2 / a1**2 + (row[i] - y1)**2 / b1**2 < 1):
             x_old = col[i] - x
             y_old = row[i] - y
-            # if interruption is active then points in a particular band are not modified 
+            # if interruption is active, then points in a particular band are not modified 
             if interruption:
               if x_old > xi - x and x_old < xi - x + d:
                 continue
@@ -93,7 +93,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
         if not ((col[i] - x1)**2 / a1**2 + (row[i] - y1)**2 / b1**2 < 1) and not((col[i] - x2)**2 / a2**2 + (row[i] - y2)**2 / b2**2 < 1):
           x_old = col[i] - x
           y_old = row[i] - y 
-          # if interruption is active then points in a particular band are not modified 
+          # if interruption is active, then points in a particular band are not modified 
           if interruption:
             if x_old > xi - x and x_old < xi - x + d:
               continue
@@ -127,7 +127,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
         if not ((col[i] - x1)**2 / a1**2 + (row[i] - y1)**2 / b1**2 < 1) and not((col[i] - x2)**2 / a2**2 + (row[i] - y2)**2 / b2**2 < 1) and not ((col[i] - x3)**2 / a3**2 + (row[i] - y3)**2 / b3**2 < 1):
           x_old = col[i] - x
           y_old = row[i] - y
-          # if interruption is active then points in a particular band are not modified 
+          # if interruption is active, then points in a particular band are not modified 
           if interruption:
             if x_old > xi - x and x_old < xi - x + d:
               continue
@@ -162,7 +162,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
         if not ((col[i] - x1)**2 / a1**2 + (row[i] - y1)**2 / b1**2 < 1) and not((col[i] - x2)**2 / a2**2 + (row[i] - y2)**2 / b2**2 < 1) and not ((col[i] - x3)**2 / a3**2 + (row[i] - y3)**2 / b3**2 < 1) and not ((col[i] - x4)**2 / a4**2 + (row[i] - y4)**2 / b4**2 < 1):
           x_old = col[i] - x
           y_old = row[i] - y
-          # if interruption is active then points in a particular band are not modified 
+          # if interruption is active, then points in a particular band are not modified 
           if interruption:
             if x_old > xi - x and x_old < xi - x + d:
               continue
@@ -201,7 +201,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
         if not ((col[i] - x1)**2 / a1**2 + (row[i] - y1)**2 / b1**2 < 1) and not((col[i] - x2)**2 / a2**2 + (row[i] - y2)**2 / b2**2 < 1) and not ((col[i] - x3)**2 / a3**2 + (row[i] - y3)**2 / b3**2 < 1) and not ((col[i] - x4)**2 / a4**2 + (row[i] - y4)**2 / b4**2 < 1) and not ((col[i] - x5)**2 / a5**2 + (row[i] - y5)**2 / b5**2 < 1):
           x_old = col[i] - x
           y_old = row[i] - y
-          # if interruption is active then points in a particular band are not modified 
+          # if interruption is active, then points in a particular band are not modified 
           if interruption:
             if x_old > xi - x and x_old < xi - x + d:
               continue
@@ -244,7 +244,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
         if not ((col[i] - x1)**2 / a1**2 + (row[i] - y1)**2 / b1**2 < 1) and not((col[i] - x2)**2 / a2**2 + (row[i] - y2)**2 / b2**2 < 1) and not ((col[i] - x3)**2 / a3**2 + (row[i] - y3)**2 / b3**2 < 1) and not ((col[i] - x4)**2 / a4**2 + (row[i] - y4)**2 / b4**2 < 1) and not ((col[i] - x5)**2 / a5**2 + (row[i] - y5)**2 / b5**2 < 1) and not ((col[i] - x6)**2 / a6**2 + (row[i] - y6)**2 / b6**2 < 1):
           x_old = col[i] - x
           y_old = row[i] - y
-          # if interruption is active then points in a particular band are not modified 
+          # if interruption is active, then points in a particular band are not modified 
           if interruption:
             if x_old > xi - x and x_old < xi - x + d:
               continue
@@ -258,7 +258,7 @@ def draw_ellipse(img, interruption, missing_fragments, sharpness_of_edges, diffi
       
   else:
     for i in range(len(row)):
-      # if interruption is active then points in a particular band are not modified 
+      # if interruption is active, then points in a particular band are not modified 
       if interruption:
         if col[i] - x > xi - x and col[i] - x < xi - x + d:
           continue

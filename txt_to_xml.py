@@ -5,7 +5,7 @@ import os
 
 # this file generates xml files for the tensorflow object detection api out of txt files
 """PARAMETER"""
-DIR = "../absdefg"             # directory in which the generated folder of the simulator is 
+DIR = "../erdex1"             # directory in which the generated folder of the simulator is 
 IMG_WIDTH = 640 # the width of the used pictures
 IMG_HEIGHT = 640 # the heigth of the used pictures
 """PARAMETER"""
@@ -19,11 +19,13 @@ OUTPUT_DIR = IMG_DIR + "/xml/"
 
 
 pathlist = Path(TXT_DIR).glob('*.txt')
+# iterate through all txt-files
 for path in pathlist:
     path_in_str = str(path)
     with open(path_in_str) as f:
         print(path_in_str)
         contents = f.readlines()
+    # create xml-files with the neccesary elements.
     annotation = ET.Element("annotation")
     folder = ET.SubElement(annotation, "folder").text = ""
     filename = ET.SubElement(annotation, "filename").text = path_in_str[dir_len + 15: -4] + ".png"

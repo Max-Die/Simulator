@@ -29,27 +29,27 @@ from triangle_contur_w_n import draw_triangle_contur_w_n
 import time 
 import multiprocessing
 
-""" This file is the main file of the dataset simulator. Please read the README.txt which you can find in this directory.
+""" This file is the main file of the dataset simulator. Please read the README.txt, which you can find in this directory.
     In the following lines of code you can modify how the generated figures should look like."""
 
 """PARAMETER"""
 MIN_NUM_OF_FIG = 3                    # minimal number of figures
 MAX_NUM_OF_FIG = 8                  # maximal number of figures per picture at least MIN_NUM_OF_FIG + 1
-INPUT_DIR = "../../test_images"              # directory of pictures relative to this file
+INPUT_DIR = "../erdex1"              # directory of pictures relative to this file
 THICKNESS_MIN = 2                # minimal thickness of the shape "line"
 THICKNESS_MAX = 10                # maximal thickness of the shape "line"
 INTERRUPTION = 0                  # controls whether a shape has an interruption and is splitted in two parts
-PIXEL_PROCESSING = [ "h", "l", "d"]        # controls how the pixels of a figure could be processed
+PIXEL_PROCESSING = ["r", "g", "b", "h", "l", "d"]        # controls how the pixels of a figure could be processed
 SHAPES = ["circularring", "ellipse", "trianglecontur", "triangle", "rectangle","rectanglecontur", "pentagon", "line"]    # defines all shapes which could be processed into an image
 MISSING_FRAGMENTS = [0,2]             # controls whether a shape has missing fragments
 SHARPNESS_OF_EDGES = 1           # controls how sharp the edges of a figure are (random noise): low -> sharp edges, minimum is 1
-DIFFICULTY = 13                    # controls how much a pixel is modified: low -> difficult
+DIFFICULTY = 40                    # controls how much a pixel is modified: low -> difficult
 SIZE_MIN = 30                     # approximitely the minimum size of an edge of a figure, minimum is 30
 SIZE_MAX = 120                    # approximitely the maximum size of an edge of a figure, at least SIZE_MIN + 1
 NUM_PROCESSES = 6                 # number of parallel processes running 
 """PARAMETER"""
 
-""" Function for drawing the shapes on a single png file."""
+""" Function for drawing the shapes on a single png-file."""
 def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
   file = open(INPUT_DIR + "/generated/txt/" + filename + ".txt", "w+")
 
@@ -63,7 +63,7 @@ def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
         # draw a perfectly shaped circular ring
         img, bb = draw_circular_ring_w_n(img, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       else:
-        # draw a circular ring with nois
+        # draw a circular ring with noise
         img, bb = draw_circular_ring(img, SHARPNESS_OF_EDGES, DIFFICULTY, SIZE_MIN, SIZE_MAX, PIXEL_PROCESSING, rand)
       file.write(str(bb[0]) + " " + str(bb[1]) + " " + str(bb[2]) + " " + str(bb[3]) + " " + fig + " " + str(0) + "\n")
 
@@ -143,8 +143,8 @@ def simulator (img, min_num_of_fig, max_num_of_fig, filename, rand):
 """ This function takes a path of an picture, draws the shapes and saves it."""
 def image_processing(path):
   pid = multiprocessing.current_process()._identity[0]
-  """ This line is important. To have different figures for each time executing this script, you have to change "pid" in the following line. 
-      Change it every time you want to have new random numbers and therefore a new configuration."""
+  """ This line is important. To have different figures for each time executing this script with the same configuration, you have to change "pid + 100" in the following line. 
+      Change it every time you want to have new random numbers and therefore a new configuration. It is recommended to change only the number, and not "pid"."""
   rand = np.random.mtrand.RandomState(pid + 100)
   img = Image.open(str(path))
   print(str(path))
@@ -170,11 +170,11 @@ if __name__ == '__main__':
   processes = []
   iterations = int(np.ceil(len(pathlist) / NUM_PROCESSES))
 
-  # iterate through all png files and do it (if wanted) in parallel 
+  # iterate through all png-files and do it (if wanted) in parallel 
   for j in range(iterations):
     for i in range(NUM_PROCESSES):
       
-      # assign each process to a png file
+      # assign each process to a png-file
       if j * NUM_PROCESSES + i < len(pathlist):
         p = multiprocessing.Process(target = image_processing, args = [pathlist[j * NUM_PROCESSES + i]])
         p.start()
