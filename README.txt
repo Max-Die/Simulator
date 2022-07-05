@@ -32,7 +32,7 @@ NUM_PROCESSES = 6                                       # number of parallel pro
 
 The simulator is pseudorandom, if you want to get different pictures (while having the same training configuration) please change the number in 
 rand = np.random.mtrand.RandomState(pid + 100) (line 161 in simulator.py) to whatever number you want. Do this every time you want to have different results.
-There will be objects drawn which pixels have all the same colour. Additionally there will be objects drawn which pixels have differentiating colours.
+There will be objects drawn, which pixels have all the same colour. Additionally, there will be objects drawn which pixels have differentiating colours.
 Proportions for that are 66,6% : 33,3%.
 
 Additional information: 
@@ -78,7 +78,7 @@ MISSING_FRAGMENTS:  must be an array containing numbers [low, high]
 SHARPNESS_OF_EDGES: each pixel will be moved randomly in x and y direction about a random value in {-SHARPNESS_OF_EDGES, +SHARPNESS_OF_EDGES}
                     no matter this configuration, perfectly sharp figures will always be drawn
                     the minimum value for this setting is 1
-                    perfectly shaped objects will also be drawn 50% : 50%
+                    perfectly shaped objects will also be drawn with proportion 50% : 50%
 
 DIFFICULTY: configures how much the pixel will be processed, for example DIFFICULTY = 15 means that the r or g or b etc. value will be changed by about 15
 
