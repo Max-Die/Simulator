@@ -98,6 +98,7 @@ each file from  ellipse_w_n.py, ellipse.py, triangle_contur.py, triangle_contur_
     Only the ellipse.py is documented detailed (because of similar structure to the other files).
 
 draw_fig.py colours the pixels of the given array.
+There you can add more species of pixel modifications.
 If you want to draw bounding boxes aroung a figure, you can specify this in draw_fig.py in lines 127 - 135.
 
 The logic of the program is simple. Because of this the program can be modified easily, especially the draw_fig.py file which is responsible for colouring. 
